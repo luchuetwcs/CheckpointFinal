@@ -9,15 +9,59 @@
     <link rel="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Butcherman" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/accueil.css') }}">
 
 
     {% block stylesheets %}{% endblock %}
+
+    {% block header %}
+        <header>
+
+            <a id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">THRASHONITE</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/">HOME</a></li>
+                                <li><a href="#discover">DISCOVER</a></li>
+                                <li><a href="#feelinglucky">FEELING LUCKY</a></li>
+                                <li><a href="#contact">ADD AN ALBUM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+        </header>
+    {% endblock header %}
 
 
 </head>
 <body>
 {% block body %}{% endblock %}
 <script src="{{ asset('build/app.js') }}"></script>
+
+
+
+{% block footer %}
+
+    <footer class="text-center">
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
+        <p>Made by our lord and savior Kyle Brace</p>
+    </footer>
+
+{% endblock %}
+
+
 {% block javascripts %}
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
