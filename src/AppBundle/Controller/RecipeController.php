@@ -105,6 +105,27 @@ class RecipeController extends Controller
     }
 
     /**
+     * Lists all information entities.
+     *
+     * @Route("/title", name="recipe_title")
+     * @Method("POST")
+     */
+    public function findInfoAction()
+    {
+        $title = $_POST['search_recipe'];
+
+        $em = $this->getDoctrine()->getManager();
+
+        $information = $em->getRepository('AppBundle:Recipe')->findInfosByTitle($title);
+
+
+        return $this->render('recipe/show.html.twig', [
+            'recipe' => $information,
+        ]);
+
+    }
+
+    /**
      * Deletes a recipe entity.
      *
      * @Route("/{id}", name="recipe_delete")
