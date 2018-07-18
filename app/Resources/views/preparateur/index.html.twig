@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Preparateurs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for preparateur in preparateurs %}
+            <tr>
+                <td><a href="{{ path('preparateur_show', { 'id': preparateur.id }) }}">{{ preparateur.id }}</a></td>
+                <td>{{ preparateur.nom }}</td>
+                <td>{{ preparateur.prenom }}</td>
+                <td>{{ preparateur.email }}</td>
+                <td>{{ preparateur.telephone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('preparateur_show', { 'id': preparateur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('preparateur_edit', { 'id': preparateur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('preparateur_new') }}">Create a new preparateur</a>
+        </li>
+    </ul>
+{% endblock %}

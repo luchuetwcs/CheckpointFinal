@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recette</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recette.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomrecette</th>
+                <td>{{ recette.nomRecette }}</td>
+            </tr>
+            <tr>
+                <th>Daterecette</th>
+                <td>{% if recette.dateRecette %}{{ recette.dateRecette|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Preparation</th>
+                <td>{{ recette.preparation }}</td>
+            </tr>
+            <tr>
+                <th>Tempsdepreparation</th>
+                <td>{{ recette.tempsDePreparation }}</td>
+            </tr>
+            <tr>
+                <th>Nbpersonne</th>
+                <td>{{ recette.nbPersonne }}</td>
+            </tr>
+            <tr>
+                <th>Dificulte</th>
+                <td>{{ recette.dificulte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recette_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
