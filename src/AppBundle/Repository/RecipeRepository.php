@@ -13,7 +13,7 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
 
     public function findInfosByTitle($title)
     {
-        $fields = array('r.id',  'r.timePreparation', 'r.timeCuisson',  'r.description');
+        $fields = array('r.id', 'r.title', 'r.timePreparation', 'r.timeCuisson',  'r.description');
         return $this->createQueryBuilder('r')
             ->select($fields)
             ->distinct()

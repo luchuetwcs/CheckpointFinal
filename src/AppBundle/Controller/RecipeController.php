@@ -120,7 +120,7 @@ class RecipeController extends Controller
 
 
         return $this->render('recipe/show.html.twig', [
-
+            'recipe' => $information,
         ]);
 
     }
