@@ -39,7 +39,7 @@ class MembersController extends Controller
      */
     public function newAction(Request $request)
     {
-        $member = new Member();
+        $member = new Members();
         $form = $this->createForm('AppBundle\Form\MembersType', $member);
         $form->handleRequest($request);
 

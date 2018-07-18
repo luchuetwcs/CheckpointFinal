@@ -39,7 +39,7 @@ class AlbumsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $album = new Album();
+        $album = new Albums();
         $form = $this->createForm('AppBundle\Form\AlbumsType', $album);
         $form->handleRequest($request);
 

@@ -39,7 +39,7 @@ class BandsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $band = new Band();
+        $band = new Bands();
         $form = $this->createForm('AppBundle\Form\BandsType', $band);
         $form->handleRequest($request);
 
