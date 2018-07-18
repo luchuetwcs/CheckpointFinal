@@ -17,9 +17,9 @@ class AppFixtures extends Fixture
     {
         $ingredients= ['carotte(s)', 'oignon(s)', 'fenouille(s)', 'poireau(x)', 'pomme de terre', 'champignon(s)',
                 'courgette', 'celeri(s)', 'navet(s)', 'poivron(s)', 'tomage', 'échalotte(s)', 'haché de boeuf',
-                'pavet(s) de boeuf', 'crevette(s)', 'onglet(s)', 'dorade(s)', 'sole(s)', 'thon'];
+                'pavet(s) de boeuf', 'crevette(s)', 'onglet(s) de boeuf', 'dorade(s)', 'sole(s)', 'thon'];
 
-        $recettes = ['Mijoté de ', 'Grillé de ', 'Brochette de '];
+        $recettes = ['Mijoté : ', 'Grillé : ', 'Brochette : '];
 
         $duration = [05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
 
@@ -34,8 +34,7 @@ class AppFixtures extends Fixture
             $recipe->setTitle($recettes[mt_rand(0, 2)].$ingredients[mt_rand(12, 18)]);
             $recipe->setTimePreparation(new \DateTime('00:'.$duration[mt_rand(0, 5)]));
             $recipe->setTimeCuisson(new \DateTime('00:'.$duration[mt_rand(5, 10)]));
-            $recipe->setDescription('Ceci est un plat qui est bon, très bon même.
-                                    Vos convives seront sous le charme.');
+            $recipe->setDescription('Un plat qui fera l\'unanimité auprès de vos convives');
             $manager->persist($recipe);
         }
 
