@@ -8,7 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Genreid</th>
+                <th>Genre</th>
                 <th>Ingredientid</th>
                 <th>Membreid</th>
                 <th>Actions</th>
@@ -19,9 +19,9 @@
             <tr>
                 <td><a href="{{ path('recette_show', { 'id': recette.id }) }}">{{ recette.id }}</a></td>
                 <td>{{ recette.nom }}</td>
-                <td>{{ recette.genreId }}</td>
-                <td>{{ recette.ingredientId }}</td>
-                <td>{{ recette.membreId }}</td>
+                <td>{{ recette.genre }}</td>
+                <td>{{ recette.ingredient }}</td>
+                <td>{{ recette.membre }}</td>
                 <td>
                     <ul>
                         <li>
