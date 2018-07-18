@@ -12,17 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Band
 {
-
-    /*
-     * Adding Personnal Method
-     */
-
-    public function __toString()
-    {
-       return $this->bandName;
-    }
-
-
     /**
      * @var int
      *

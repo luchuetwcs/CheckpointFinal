@@ -13,7 +13,7 @@ class AlbumType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nameAlbum')->add('releaseDate')->add('imageUrl')->add('descriptionAlbum');
+        $builder->add('nameAlbum')->add('releaseDate')->add('imageUrl')->add('descriptionAlbum')->add('bandName');
     }/**
      * {@inheritdoc}
      */
