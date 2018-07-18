@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="text-center">All recipes</h2>
+    {% for recipe in recipes %}
+        <div class="jumbotron">
+            <h1 class="display-4">{{ recipe.name }}</h1>
+            <p class="lead">{{ recipe.details }}</p>
+            <hr class="my-4">
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p>
+        </div>
+    {% endfor %}
+
+{% endblock %}

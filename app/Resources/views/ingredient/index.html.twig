@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block carousel %}{% endblock carousel %}
+{% block search %}{%  endblock search %}
+{% block footer %}{% endblock footer %}
+
+{% block body %}
+    <h1>Ingredients list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.id }}</a></td>
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.quantity }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ingredient_new', { 'id': recipe_id }) }}">Create a new ingredient</a>
+        </li>
+        <li>
+            <a href="{{ path('recipe_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

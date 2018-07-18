@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block carousel %}{% endblock carousel %}
+{% block search %}{%  endblock search %}
+{% block footer %}{% endblock footer %}
+
+{% block body %}
+    <h1>Recipes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Difficulty</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recipe in recipes %}
+            <tr>
+                <td><a href="{{ path('recipe_show', { 'id': recipe.id }) }}">{{ recipe.id }}</a></td>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.time }}</td>
+                <td>{{ recipe.difficulty }}</td>
+
+                <td width="20%" class="text-center" style="vertical-align:middle">
+                    <a href="{{ path('recipe_show', { 'id': recipe.id }) }}">
+                        <button class="btn-style btn btn-block" style="">Details</button>
+                    </a>
+
+                    <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}">
+                        <button class="btn-style btn-align btn btn-block">Edit the recipe</button>
+                    </a>
+
+                    <a href="{{ path('ingredient_index', { 'id': recipe.id }) }}">
+                        <button class="btn-style btn-align btn btn-block">Ingredients</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recipe_new') }}">Create a new recipe</a>
+        </li>
+    </ul>
+{% endblock %}
