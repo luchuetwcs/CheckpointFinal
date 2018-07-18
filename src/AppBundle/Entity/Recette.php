@@ -61,6 +61,13 @@ class Recette
     private $cuisson;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vegetarien", type="boolean")
+     */
+    private $vegetarien;
+
+    /**
      * @ManyToOne(targetEntity="User", inversedBy="recettes")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -70,7 +77,6 @@ class Recette
      * @OneToMany(targetEntity="Ingredient", mappedBy="recette")
      */
     private $ingredients;
-    // ...
 
     public function __construct()
     {
@@ -186,6 +192,22 @@ class Recette
     public function getCuisson()
     {
         return $this->cuisson;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVegetarien()
+    {
+        return $this->vegetarien;
+    }
+
+    /**
+     * @param bool $vegetarien
+     */
+    public function setVegetarien($vegetarien)
+    {
+        $this->vegetarien = $vegetarien;
     }
 
     /**

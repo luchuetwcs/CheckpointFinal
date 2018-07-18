@@ -29,6 +29,10 @@
                 <th>Cuisson</th>
                 <td>{{ recette.cuisson }}</td>
             </tr>
+            <tr>
+                <th>Vegetarien</th>
+                <td>{% if recette.vegetarien %}Yes{% else %}No{% endif %}</td>
+            </tr>
         </tbody>
     </table>
 

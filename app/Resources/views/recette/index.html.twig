@@ -12,6 +12,7 @@
                 <th>Description</th>
                 <th>Preparation</th>
                 <th>Cuisson</th>
+                <th>Vegetarien</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ recette.description }}</td>
                 <td>{{ recette.preparation }}</td>
                 <td>{{ recette.cuisson }}</td>
+                <td>{% if recette.vegetarien %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>
