@@ -36,7 +36,7 @@ class Ingredient
     private $unite;
 
     /**
-     * @ORM\OneToMany(targetEntity="ListeIngredients", mappedBy="ingredient", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="ListeIngredients", mappedBy="ingredient", fetch="LAZY")
      */
     private $listeIngredients;
 

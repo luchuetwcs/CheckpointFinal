@@ -68,7 +68,7 @@ class Recette
     private $vegetarien;
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="recettes")
+     * @ManyToOne(targetEntity="User", inversedBy="recettes", fetch="LAZY")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

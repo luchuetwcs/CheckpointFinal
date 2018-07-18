@@ -76,7 +76,6 @@
                         }
                         var my_list = document.getElementById("listeIngredients");
                         my_list.innerHTML = str;
-
                     }
                 };
                 xmlhttp.open("GET", "{{ path('recette_new') }}?q="+str, true);

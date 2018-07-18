@@ -20,13 +20,13 @@ class ListeIngredients
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ingredient", inversedBy="listeIngredients" ,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Ingredient", inversedBy="listeIngredients" ,cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=false, referencedColumnName="id", onDelete="CASCADE")
      */
     private $ingredient;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Recette", inversedBy="ingredients" ,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Recette", inversedBy="ingredients" ,cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=false, referencedColumnName="id", onDelete="CASCADE")
      */
     private $recette;

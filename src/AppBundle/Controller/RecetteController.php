@@ -119,7 +119,6 @@ class RecetteController extends Controller
     public function showAction(Recette $recette)
     {
         $deleteForm = $this->createDeleteForm($recette);
-
         return $this->render('recette/show.html.twig', array(
             'recette' => $recette,
             'delete_form' => $deleteForm->createView(),
