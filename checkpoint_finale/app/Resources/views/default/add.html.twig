@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/main.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<!-- Menu Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Mamie tond !</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('homepage') }}">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('add') }}">Ajouter une recette</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Voir toutes les recettes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Fin header-->
+
+<!-- Formualire ajout recette -->
+    <div class="container">
+        <form name="appbundle_recette" method="post">
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                    <div><label for="appbundle_recette_titre" class="required">Titre</label><br><input type="text" id="appbundle_recette_titre" name="appbundle_recette[titre]" required="required" maxlength="255" /></div>
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                    <div><label for="appbundle_recette_auteur" class="required">Auteur</label><br><input type="text" id="appbundle_recette_auteur" name="appbundle_recette[auteur]" required="required" maxlength="255" /></div>
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <div><label for="appbundle_recette_enonce" class="required">Enonce</label><br><textarea id="appbundle_recette_enonce" name="appbundle_recette[enonce]" required="required"></textarea></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                    <div><label for="appbundle_recette_url">Url</label><br><input type="text" id="appbundle_recette_url" name="appbundle_recette[url]" maxlength="255" /></div>
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" id="appbundle_recette_Enregistrer"  class="btn btn-primary" name="appbundle_recette[Enregistrer]">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" id="appbundle_recette__token" name="appbundle_recette[_token]" value="ZW6oS-npXJV0yiUJD_LBJ75y1ifTaZK_3LyCMgHphNA" />
+        </form>
+    </div>
+    <!-- Fin formulaire ajout recette -->
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('build/app.js') }}"></script>
+{% endblock %}
