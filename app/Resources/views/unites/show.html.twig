@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ unite.id }}</td>
+            </tr>
+            <tr>
+                <th>Unite</th>
+                <td>{{ unite.unite }}</td>
+            </tr>
+            <tr>
+                <th>Symbole</th>
+                <td>{{ unite.symbole }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('unites_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

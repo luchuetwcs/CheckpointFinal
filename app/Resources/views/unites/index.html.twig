@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unites list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Unite</th>
+                <th>Symbole</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for unite in unites %}
+            <tr>
+                <td><a href="{{ path('unites_show', { 'id': unite.id }) }}">{{ unite.id }}</a></td>
+                <td>{{ unite.unite }}</td>
+                <td>{{ unite.symbole }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('unites_show', { 'id': unite.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
