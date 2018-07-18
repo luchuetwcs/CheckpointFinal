@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class IngredientRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findingredientById( $idReccete){
+        $fields = array('i.nom','i.poids','i.nombre');
+        return $this->createQueryBuilder('i')
+            ->select($fields)
+            ->Where('i.recette = :idRecette')
+            ->setParameter('idRecette',$idReccete)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
+
+
+/*
+ select ingredient.nom,recette.nomRecette from recette
+  join ingredient  on ingredient.recette_id = recette.id
+where recette.id = 6
+ */

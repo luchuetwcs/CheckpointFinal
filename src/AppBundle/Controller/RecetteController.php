@@ -3,9 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recette;
+use JMS\Serializer\SerializerInterface;
+use AppBundle\Repository\RecetteRepository;
+use AppBundle\Repository\IngredientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Recette controller.
@@ -31,6 +35,36 @@ class RecetteController extends Controller
         ));
     }
 
+
+
+    /**
+     * Finds and displays a user entity.
+     *
+     * @Route("/find/{nom}", name="recette_search")
+     * @Method("GET")
+     */
+    public function searchImmeubleAction(SerializerInterface $serializer,$nom)
+    {
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        if($nom == 'all'){
+            $nom = $em->getRepository('AppBundle:Recette')->findRecette();
+        }else {
+            $nom = $em->getRepository('AppBundle:Recette')->findRecetteByNom($nom);
+        }
+        $data=$serializer->serialize($nom, 'json');
+        $response=new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+
+
+
+
+    }
+
+
     /**
      * Creates a new recette entity.
      *
@@ -48,7 +82,7 @@ class RecetteController extends Controller
             $em->persist($recette);
             $em->flush();
 
-            return $this->redirectToRoute('recette_show', array('id' => $recette->getId()));
+            return $this->redirectToRoute('ingredient_new');
         }
 
         return $this->render('recette/new.html.twig', array(
@@ -65,10 +99,16 @@ class RecetteController extends Controller
      */
     public function showAction(Recette $recette)
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $idRecette= $recette->getId();
+        $ingredient = $em->getRepository('AppBundle:Ingredient')->findingredientById($idRecette);
+
         $deleteForm = $this->createDeleteForm($recette);
 
         return $this->render('recette/show.html.twig', array(
             'recette' => $recette,
+            'ingredient'=>$ingredient,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -106,6 +146,8 @@ class RecetteController extends Controller
      */
     public function deleteAction(Request $request, Recette $recette)
     {
+
+
         $form = $this->createDeleteForm($recette);
         $form->handleRequest($request);
 

@@ -10,4 +10,27 @@ namespace AppBundle\Repository;
  */
 class RecetteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findRecetteByNom( $nom){
+        $fields = array('r.id','r.nomRecette','r.dateRecette','r.photo','r.dateRecette','r.preparation','r.tempsDePreparation','r.nbPersonne','r.dificulte','r.typeDeRecette','c.nom','c.prenom','c.email','c.telephone');
+        return $this->createQueryBuilder('r')
+            ->select($fields)
+            ->join('r.preparateur', 'c')
+            ->Where('r.nomRecette LIKE :nom')
+            ->setParameter('nom','%'. $nom.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findRecette(){
+        $fields = array('r.id','r.nomRecette','r.dateRecette','r.photo','r.dateRecette','r.preparation','r.tempsDePreparation','r.nbPersonne','r.dificulte','r.typeDeRecette','c.nom','c.prenom','c.email','c.telephone');
+        return $this->createQueryBuilder('r')
+            ->select($fields)
+            ->join('r.preparateur', 'c')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
 }

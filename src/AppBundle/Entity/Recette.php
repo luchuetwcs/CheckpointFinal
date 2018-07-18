@@ -3,31 +3,36 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Recette
- *
+ *@Vich\Uploadable
  * @ORM\Table(name="recette")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecetteRepository")
  */
 class Recette
 {
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
 
-    private $type;
-
-    /**
-
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Preparateur")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Preparateur",cascade={"persist"})
 
      * @ORM\JoinColumn(nullable=false)
 
      */
 
     private $preparateur;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getNomRecette();
+    }
+
 
     /**
      * @var int
@@ -45,6 +50,13 @@ class Recette
      * @ORM\Column(name="nomRecette", type="string", length=255)
      */
     private $nomRecette;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_de_recette", type="string", length=255)
+     */
+    private $typeDeRecette;
 
     /**
      * @var \DateTime
@@ -85,10 +97,22 @@ class Recette
     /**
      * @var string
      *
-     * @ORM\Column(name="dificult�e", type="string", length=255)
+     * @ORM\Column(name="dificulte", type="string", length=255)
      */
     private $dificulte;
-
+    /**
+     *
+     * @Vich\UploadableField(mapping="uploads_image" ,fileNameProperty="photo",)
+     *
+     * @var File
+     */
+    protected $imageFile;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    protected $photo;
 
     /**
      * Get id.
@@ -245,31 +269,6 @@ class Recette
     }
 
 
-
-    /**
-     * Set type.
-     *
-     * @param \AppBundle\Entity\Type $type
-     *
-     * @return Recette
-     */
-    public function setType(\AppBundle\Entity\Type $type = null)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type.
-     *
-     * @return \AppBundle\Entity\Type
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
     /**
      * Set preparateur.
      *
@@ -293,4 +292,70 @@ class Recette
     {
         return $this->preparateur;
     }
+
+
+
+    /**
+     * Set typeDeRecette.
+     *
+     * @param string $typeDeRecette
+     *
+     * @return Recette
+     */
+    public function setTypeDeRecette($typeDeRecette)
+    {
+        $this->typeDeRecette = $typeDeRecette;
+
+        return $this;
+    }
+
+    /**
+     * Get typeDeRecette.
+     *
+     * @return string
+     */
+    public function getTypeDeRecette()
+    {
+        return $this->typeDeRecette;
+    }
+
+    /**
+     * Set photo.
+     *
+     * @param string|null $photo
+     *
+     * @return Recette
+     */
+    public function setPhoto($photo = null)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo.
+     *
+     * @return string|null
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
 }

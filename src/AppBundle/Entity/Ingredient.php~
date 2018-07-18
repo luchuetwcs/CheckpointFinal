@@ -21,6 +21,14 @@ class Ingredient
      */
 
     private $recette;
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->recette;
+    }
 
     /**
      * @var int

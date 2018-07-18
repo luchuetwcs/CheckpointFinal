@@ -2,3 +2,12 @@ $brand-primary: darken(#428bca, 20%);
 body{
   color: $brand-primary;
 }
+.navbar.navbar-expand-lg.navbar-dark.indigo {
+  background: #080707 !important;
+}
+#recette {
+  display: flex;
+}
+#rechecheNom {
+  border: 1px solid green;
+}

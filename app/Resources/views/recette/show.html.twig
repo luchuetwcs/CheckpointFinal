@@ -13,6 +13,14 @@
                 <th>Nomrecette</th>
                 <td>{{ recette.nomRecette }}</td>
             </tr>
+
+            <tr>
+                <th>Ingredient</th>
+                <td>{% for ingredient in ingredient %}
+
+                       <li>{{ ingredient.nom }} {{ ingredient.poids }} </li>
+                    {% endfor %}</td>
+            </tr>
             <tr>
                 <th>Daterecette</th>
                 <td>{% if recette.dateRecette %}{{ recette.dateRecette|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -36,17 +44,18 @@
         </tbody>
     </table>
 
+
     <ul>
         <li>
-            <a href="{{ path('recette_index') }}">Back to the list</a>
+            <a href="{{ path('home_page') }}">Retourner à la page d'accueil</a>
         </li>
         <li>
-            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
+            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Modifier</a>
         </li>
-        <li>
+      {#{  <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
+        </li> }#}
     </ul>
 {% endblock %}
