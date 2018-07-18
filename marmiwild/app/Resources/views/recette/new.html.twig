@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Recette creation</h1>
+
+    <p>{{ form_label(form.categorie) }}</p>
+    <p>{{ form_widget(form.categorie) }}</p>
+    <p>{{ form_start(form) }}</p>
+    <p>{{ form_label(form.titre) }}</p>
+    <p>{{ form_widget(form.titre) }}</p>
+    <p>{{ form_label(form.nombrePersonne) }}</p>
+    <p>{{ form_widget(form.nombrePersonne) }}</p>
+    <p>{{ form_label(form.cout) }}</p>
+    <p>{{ form_widget(form.cout) }}</p>
+    <p>{{ form_label(form.temps) }}</p>
+    <p>{{ form_widget(form.temps) }}</p>
+    <p>{{ form_widget(form.temps) }}</p>
+    <p>{{ form_label(form.preparation) }}</p>
+    <p>{{ form_widget(form.preparation) }}</p>
+    <p>{{ form_label(form.ingredients) }}</p>
+    <p>{{ form_widget(form.ingredients) }}</p>
+    <p><a href="{{ path('ingredient_new') }}">Ajouter de nouveaux ingrédients</a></p>
+    <p>{{ form_label(form.quantite) }}</p>
+    <p>{{ form_widget(form.quantite) }}</p>
+   
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <p>
+            <a href="{{ path('recette_index') }}">Back to the pst</a>
+        </p>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Preparation
+ *
+ * @ORM\Table(name="preparation")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PreparationRepository")
+ */
+class Preparation
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etape", type="string", length=255)
+     */
+    private $etape;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->description;
+    }
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set etape
+     *
+     * @param string $etape
+     *
+     * @return Preparation
+     */
+    public function setEtape($etape)
+    {
+        $this->etape = $etape;
+
+        return $this;
+    }
+
+    /**
+     * Get etape
+     *
+     * @return string
+     */
+    public function getEtape()
+    {
+        return $this->etape;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Preparation
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+}

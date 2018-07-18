@@ -1,0 +1,28 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+
+/* --- COLORS --- */
+
+$pink : #ea0d83;
+$green : #4a9271;
+$yellow : #ac8100;
+
+
+/* --- FONTS --- */
+
+@font-face {
+  font-family: 'Nilland';
+  src:    url('../fonts/Nilland.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DINN';
+  src:    url('../fonts/DINNextLTPro-LightCondensed.otf') format('OpenType');
+}
+
+
+img{
+  width: 10vw;
+}
+

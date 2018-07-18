@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/build/css/accueil.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="card-header ">
+        <form>
+            <h1><b>Rechercher une recette</b></h1>
+         <input id="onkeyup" type="text" style="width: 25vw">
+        </form>
+    </div>
+
+
+{% endblock %}
+
+

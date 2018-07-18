@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}MarmiWild{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('build/css/main.css') }}">
+
+</head>
+
+<body>
+{% block header %}
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">MarmiWild</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Accueil</a></li>
+                    <li><a href="/recette">Voir les recettes</a></li>
+                    <li><a href="/recette/new">Créer une recette</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+    </header>
+
+{% endblock header %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+    <footer>
+
+    </footer>
+{% endblock footer %}
+
+<!-- these 3 files now must be included in every page -->
+<script src="{{ asset('build/manifest.js') }}"></script>
+<script src="{{ asset('build/jquery_jqueryUi.js') }}"></script>
+<script src="{{ asset('build/js/app.js') }}"></script>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

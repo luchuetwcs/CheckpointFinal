@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/build/css/accueil.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <h1>Liste des recettes</h1>
+
+    {% for recette in recettes %}
+<div class="container recette" >
+    <h2>Catégorie : {{ recette.categorie }}</h2>
+    <h2>Titre : {{ recette.titre }}</h2>
+    <p>Nb pers : {{ recette.nombrePersonne }}</p>
+    <p>Coût: {{ recette.cout }} /5</p>
+    <p>Temps : {{ recette.temps }}</p>
+    <p>Préparation : {{ recette.preparation }}</p>
+    <img src="{{ recette.image }}" alt="">
+</div>
+ {% endfor %}
+
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('recette_new') }}">Create a new recette</a>
+        </li>
+    </ul>
+{% endblock %}
+
+
+{% block javascript %}
+<script src="{{ asset('build/js/app.js') }}"></script>
+{% endblock %}
