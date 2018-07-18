@@ -55,6 +55,7 @@ class RecetteController extends Controller
             $nom = $em->getRepository('AppBundle:Recette')->findRecetteByNom($nom);
         }
         $data=$serializer->serialize($nom, 'json');
+
         $response=new Response($data);
         $response->headers->set('Content-Type', 'application/json');
         return $response;
