@@ -3,8 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Ingredient
@@ -31,13 +29,6 @@ class Ingredient
     private $nom;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="quantite", type="float")
-     */
-    private $quantite;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="unite", type="string", length=255, nullable=true)
@@ -45,10 +36,9 @@ class Ingredient
     private $unite;
 
     /**
-     * @ManyToOne(targetEntity="Recette", inversedBy="ingredients")
-     * @JoinColumn(name="recette_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="ListeIngredients", mappedBy="ingredient", fetch="EXTRA_LAZY")
      */
-    private $recette;
+    private $listeIngredients;
 
     public function __toString()
     {
@@ -90,30 +80,6 @@ class Ingredient
     }
 
     /**
-     * Set quantite
-     *
-     * @param float $quantite
-     *
-     * @return Ingredient
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    /**
-     * Get quantite
-     *
-     * @return float
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    /**
      * Set unite
      *
      * @param string $unite
@@ -140,16 +106,17 @@ class Ingredient
     /**
      * @return mixed
      */
-    public function getRecette()
+    public function getListeIngredients()
     {
-        return $this->recette;
+        return $this->listeIngredients;
     }
 
     /**
-     * @param mixed $recette
+     * @param mixed $listeIngredients
      */
-    public function setRecette($recette)
+    public function setListeIngredients($listeIngredients)
     {
-        $this->recette = $recette;
+        $this->listeIngredients = $listeIngredients;
     }
+
 }

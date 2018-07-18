@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class IngredientRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function nomIngredient() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.nom')
+            ->distinct()
+            ->getQuery();
+        return $qb->getResult();
+    }
+
 }

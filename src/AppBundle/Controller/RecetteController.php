@@ -2,10 +2,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Ingredient;
+use AppBundle\Entity\ListeIngredients;
 use AppBundle\Entity\Recette;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Recette controller.
@@ -43,7 +47,55 @@ class RecetteController extends Controller
         $form = $this->createForm('AppBundle\Form\RecetteType', $recette);
         $form->handleRequest($request);
 
+        $ing = $this->getDoctrine()->getManager()
+            ->getRepository(Ingredient::class)->nomIngredient();
+
+        foreach($ing as $key => $value){
+            foreach ( $value as $test){
+                $tableau[]=$test;
+            }
+        }
+
+        // get the q parameter from URL
+        $q = $request->query->get('q');
+
+        $hint = "";
+
+        // lookup all hints from array if $q is different from ""
+        if ($q !== NULL) {
+            $q = strtolower($q);
+            $len=strlen($q);
+            foreach($tableau as $name) {
+                if (stristr($q, substr($name, 0, $len))) {
+                    if ($hint === "") {
+                        $hint = $name;
+                    } else {
+                        $hint .= ", $name";
+                    }
+                }
+            }
+            return new Response($hint);
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $ingredients=$request->request->get('ingredients');
+            $quantites=$request->request->get('quantites');
+            foreach($ingredients as $key=>$value) {
+                $em = $this->getDoctrine()->getManager();
+
+                $ingredient = new Ingredient();
+                $ingredient->setNom($value);
+                $em->persist($ingredient);
+
+                $listeIngredients = new ListeIngredients();
+                $listeIngredients->setRecette($recette);
+                $listeIngredients->setQuantite($quantites[$key]);
+                $listeIngredients->setIngredient($ingredient);
+
+                $em->persist($listeIngredients);
+                $em->flush();
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($recette);
             $em->flush();
@@ -54,6 +106,7 @@ class RecetteController extends Controller
         return $this->render('recette/new.html.twig', array(
             'recette' => $recette,
             'form' => $form->createView(),
+            'allingredient' => $tableau,
         ));
     }
 

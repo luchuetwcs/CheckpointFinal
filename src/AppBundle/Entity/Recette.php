@@ -74,7 +74,7 @@ class Recette
     private $user;
 
     /**
-     * @OneToMany(targetEntity="Ingredient", mappedBy="recette")
+     * @ORM\OneToMany(targetEntity="ListeIngredients", mappedBy="recette")
      */
     private $ingredients;
 

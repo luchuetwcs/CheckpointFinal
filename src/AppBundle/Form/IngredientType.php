@@ -13,7 +13,7 @@ class IngredientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('quantite')->add('unite')->add('recette');
+        $builder->add('nom')->add('unite')->add('listeIngredients');
     }/**
      * {@inheritdoc}
      */

@@ -4,8 +4,13 @@
     <h1>Recette creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+    <a id="addNewIngredient"><button type='button' class='btn btn-success'>Ajouter un ingrédient</button></a>
+    <form method="POST" action="{{ path('recette_new') }}">
+        <div id="listeIngredient">
+        </div>
+        <input type="submit" value="Create"/>
+    </form>
     {{ form_end(form) }}
 
     <ul>
@@ -13,4 +18,71 @@
             <a href="{{ path('recette_index') }}">Back to the list</a>
         </li>
     </ul>
+    <datalist id="listeIngredients">
+        {% for ingredient in allingredient %}
+        <option value="{{ ingredient }}"></option>
+        {% endfor %}
+    </datalist>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $("#addNewIngredient").click(function(){
+            var elem = $("<input/>",{
+                type: "text",
+                name: "ingredients[]",
+                list: "listeIngredients",
+                autocomplete: "off",
+                onkeyup:"showHint(this.value)",
+                placeholder:"Cherchez une ville ..."
+
+            });
+            var quant = $("<input/>",{
+                type: "number",
+                name: "quantites[]"
+            });
+
+            var br = $("<br>");
+
+            var removeLink = $("<button type='button' class='btn btn-danger'>Supprimer</button>").click(function(){
+                $(quant).remove();
+                $(elem).remove();
+                $(br).remove();
+                $(this).remove();
+            });
+
+            $("#listeIngredient").append(br).append(elem).append(quant).append(removeLink);
+        });
+    </script>
+    <script>
+        var listeingredient = [];
+
+        {% for ingredient in allingredient %}
+        listeingredient.push('{{ ingredient }}');
+        {% endfor %}
+
+        function showHint(str) {
+
+            if (str.length == 0) {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        for (var i=0; i <  listeingredient.length;++i){
+                            str += '<option value="'+listeingredient[i]+'" />';
+                        }
+                        var my_list = document.getElementById("listeIngredients");
+                        my_list.innerHTML = str;
+
+                    }
+                };
+                xmlhttp.open("GET", "{{ path('recette_new') }}?q="+str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+
 {% endblock %}
