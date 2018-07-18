@@ -17,7 +17,7 @@ class AlbumsController extends Controller
     /**
      * Lists all album entities.
      *
-     * @Route("/", name="albums_index")
+     * @Route("/", name="albums")
      * @Method("GET")
      */
     public function indexAction()

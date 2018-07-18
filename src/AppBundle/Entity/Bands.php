@@ -31,9 +31,9 @@ class Bands
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptionBand", type="text")
+     * @ORM\Column(name="stuffBand", type="text")
      */
-    private $descriptionBand;
+    private $stuffBand;
 
 
     /**
@@ -77,9 +77,9 @@ class Bands
      *
      * @return Bands
      */
-    public function setDescription($descriptionBand)
+    public function setDescription($stuffBand)
     {
-        $this->descriptionBand = $descriptionBand;
+        $this->stuffBand = $stuffBand;
 
         return $this;
     }
@@ -91,6 +91,6 @@ class Bands
      */
     public function getDescription()
     {
-        return $this->descriptionBand;
+        return $this->stuffBand;
     }
 }

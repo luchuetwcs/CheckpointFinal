@@ -38,9 +38,9 @@ class Albums
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptionAlbum", type="text")
+     * @ORM\Column(name="stuffAlbum", type="text")
      */
-    private $descriptionAlbum;
+    private $stuffAlbum;
 
     /**
      * @var string
@@ -115,9 +115,9 @@ class Albums
      *
      * @return Albums
      */
-    public function setDescription($descriptionAlbum)
+    public function setDescription($stuffAlbum)
     {
-        $this->descriptionAlbum = $descriptionAlbum;
+        $this->stuffAlbum = $stuffAlbum;
 
         return $this;
     }
@@ -129,7 +129,7 @@ class Albums
      */
     public function getDescription()
     {
-        return $this->descriptionAlbum;
+        return $this->stuffAlbum;
     }
 
     /**
