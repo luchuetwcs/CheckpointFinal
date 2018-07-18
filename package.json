@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "webpack-notifier": "^1.6.0"
+  },
+  "name": "checkpointfinal",
+  "description": ".checkout =========",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luchuetwcs/CheckpointFinal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luchuetwcs/CheckpointFinal/issues"
+  },
+  "homepage": "https://github.com/luchuetwcs/CheckpointFinal#readme"
+}
