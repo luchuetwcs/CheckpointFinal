@@ -11,16 +11,19 @@ Class CompositionFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {   
-        for($i=0; $i<10;$i++){
-        $composition = new Composition();
-        $composition->setQuantite(mt_rand(0,1000));
-        for($a=0; $a<mt_rand(1,15); $a++){
-        $composition->setRecette($this->getReference('recette'.$i));
-        }
-        $composition->setIngredients($this->getReference('ingredient'.$i));
+        for($i=0; $i<5;$i++){
+            $a =0;
+            while($a < mt_rand(1,10)){
+                $composition = new Composition();
+                $composition->setQuantite(mt_rand(0,1000));
+                $composition->setRecette($this->getReference('recette'.$i));
+                $composition->setIngredients($this->getReference('ingredient'.mt_rand(0,10)));
 
-        $manager->persist($composition);
+                $manager->persist($composition);
+                $a++;
+            }
         }
+
         $manager->flush();
     }
 

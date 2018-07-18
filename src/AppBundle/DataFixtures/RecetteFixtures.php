@@ -17,7 +17,7 @@ Class RecetteFixtures extends Fixture implements DependentFixtureInterface
         
         for($i = 0;$i <10; $i++){
             $recette = new Recette();
-            $recette->setNom("Recette n° ");
+            $recette->setNom("Recette n° ".$i);
             $recette->setNbPersonne(mt_rand(1,10));
             $recette->setDifficulte($difficulte[mt_rand(0,3)]);
             $recette->setCout($cout[mt_rand(0,2)]);
