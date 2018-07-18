@@ -13,7 +13,7 @@ class RecetteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('preparation')->add('cuisson')->add('user');
+        $builder->add('nom')->add('type')->add('description')->add('preparation')->add('cuisson')->add('user');
     }/**
      * {@inheritdoc}
      */

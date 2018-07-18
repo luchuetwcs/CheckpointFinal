@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+                <th>Type</th>
                 <th>Description</th>
                 <th>Preparation</th>
                 <th>Cuisson</th>
@@ -19,6 +20,7 @@
             <tr>
                 <td><a href="{{ path('recette_show', { 'id': recette.id }) }}">{{ recette.id }}</a></td>
                 <td>{{ recette.nom }}</td>
+                <td>{{ recette.type }}</td>
                 <td>{{ recette.description }}</td>
                 <td>{{ recette.preparation }}</td>
                 <td>{{ recette.cuisson }}</td>

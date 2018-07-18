@@ -53,6 +53,11 @@ class User
         $this->recettes = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->id." : ".$this->name;
+    }
+
     /**
      * Get id
      *

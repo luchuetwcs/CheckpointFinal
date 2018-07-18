@@ -50,6 +50,11 @@ class Ingredient
      */
     private $recette;
 
+    public function __toString()
+    {
+        return $this->id." : ".$this->nom;
+    }
+
     /**
      * Get id
      *

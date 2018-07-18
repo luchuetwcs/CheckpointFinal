@@ -35,6 +35,13 @@ class Recette
     /**
      * @var string
      *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -68,6 +75,11 @@ class Recette
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->id." : ".$this->nom;
     }
 
     /**
@@ -206,5 +218,21 @@ class Recette
     public function setIngredients($ingredients)
     {
         $this->ingredients = $ingredients;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }
