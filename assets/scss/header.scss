@@ -1,0 +1,13 @@
+.nav-link {
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 100px;
+  color:#000;
+  text-decoration:none;
+  background: #dcdcdc no-repeat scroll 5px center;
+}
+
+.active{
+  transform: translate(-2px, -2px);
+  box-shadow: 1px 1px 1px 1px black;
+}

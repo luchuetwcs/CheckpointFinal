@@ -1,0 +1,20 @@
+/* Aeration du contenu page d'accueil */
+
+h1 {
+  margin-bottom: 100px;
+}
+
+.search {
+  margin-top: 100px;
+}
+
+.random_recipes {
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.separate {
+  margin-top: 50px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3dpbGRlci9CdXJlYXUvY2hlY2twb2ludEZpbmFsL2Fzc2V0cy9zY3NzL2FjY3VlaWwuc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKiBBZXJhdGlvbiBkdSBjb250ZW51IHBhZ2UgZCdhY2N1ZWlsICovXG5cbmgxe1xuICBtYXJnaW4tYm90dG9tOiAxMDBweDtcbn1cblxuLnNlYXJjaHtcbiAgbWFyZ2luLXRvcDogMTAwcHg7XG59XG5cbi5yYW5kb21fcmVjaXBlc3tcbiAgbWFyZ2luLXRvcDogMjAwcHg7XG4gIG1hcmdpbi1ib3R0b206IDIwMHB4O1xufVxuXG4uc2VwYXJhdGV7XG4gIG1hcmdpbi10b3A6IDUwcHg7XG59XG5cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSx3Q0FBd0M7QUFFeEMsQUFBQSxFQUFFLENBQUE7RUFDQSxhQUFhLEVBQUUsS0FBSyxHQUNyQjs7QUFFRCxBQUFBLE9BQU8sQ0FBQTtFQUNMLFVBQVUsRUFBRSxLQUFLLEdBQ2xCOztBQUVELEFBQUEsZUFBZSxDQUFBO0VBQ2IsVUFBVSxFQUFFLEtBQUs7RUFDakIsYUFBYSxFQUFFLEtBQUssR0FDckI7O0FBRUQsQUFBQSxTQUFTLENBQUE7RUFDUCxVQUFVLEVBQUUsSUFBSSxHQUNqQiJ9 */

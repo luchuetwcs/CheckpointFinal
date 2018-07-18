@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/accueil.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <!-- Fonction de recherche d'une recette -->
+
+    <div class="container search">
+        <div class="row">
+            <form class="offset-4">
+                <input type="search" name="search_recipe">
+                <input type="submit" value="Search a recipe">
+            </form>
+        </div>
+
+
+        <!-- Bloc générant des recettes aléatoires de la bdd -->
+
+    <div class="container">
+
+        <section class="random_recipes">
+            <h1 class="text-center">Our best recipes</h1>
+            <div class="row">
+                <div class="offset-1 col-5">
+                    <h4>{{ recipe1.title }}</h4>
+                    <p>{{ recipe1.description }}</p>
+                </div>
+                <div class="offset-1 col-5">
+                    <h4>{{ recipe2.title }}</h4>
+                    <p>{{ recipe2.description }}</p>
+                </div>
+            </div>
+            <div class="row separate">
+                <div class="offset-1 col-5">
+                    <h4>{{ recipe3.title }}</h4>
+                    <p>{{ recipe3.description }}</p>
+                </div>
+                <div class="offset-1 col-5">
+                    <h4>{{ recipe4.title }}</h4>
+                    <p>{{ recipe4.description }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    </div>
+
+
+
+{% endblock %}
