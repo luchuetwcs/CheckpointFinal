@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Members;
+use AppBundle\Entity\Member;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -10,23 +10,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Member controller.
  *
- * @Route("members")
+ * @Route("member")
  */
-class MembersController extends Controller
+class MemberController extends Controller
 {
     /**
      * Lists all member entities.
      *
-     * @Route("/", name="members_index")
+     * @Route("/", name="member_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $members = $em->getRepository('AppBundle:Members')->findAll();
+        $members = $em->getRepository('AppBundle:Member')->findAll();
 
-        return $this->render('members/index.html.twig', array(
+        return $this->render('member/index.html.twig', array(
             'members' => $members,
         ));
     }
@@ -34,13 +34,13 @@ class MembersController extends Controller
     /**
      * Creates a new member entity.
      *
-     * @Route("/new", name="members_new")
+     * @Route("/new", name="member_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $member = new Members();
-        $form = $this->createForm('AppBundle\Form\MembersType', $member);
+        $member = new Member();
+        $form = $this->createForm('AppBundle\Form\MemberType', $member);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,10 +48,10 @@ class MembersController extends Controller
             $em->persist($member);
             $em->flush();
 
-            return $this->redirectToRoute('members_show', array('id' => $member->getId()));
+            return $this->redirectToRoute('member_show', array('id' => $member->getId()));
         }
 
-        return $this->render('members/new.html.twig', array(
+        return $this->render('member/new.html.twig', array(
             'member' => $member,
             'form' => $form->createView(),
         ));
@@ -60,14 +60,14 @@ class MembersController extends Controller
     /**
      * Finds and displays a member entity.
      *
-     * @Route("/{id}", name="members_show")
+     * @Route("/{id}", name="member_show")
      * @Method("GET")
      */
-    public function showAction(Members $member)
+    public function showAction(Member $member)
     {
         $deleteForm = $this->createDeleteForm($member);
 
-        return $this->render('members/show.html.twig', array(
+        return $this->render('member/show.html.twig', array(
             'member' => $member,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -76,22 +76,22 @@ class MembersController extends Controller
     /**
      * Displays a form to edit an existing member entity.
      *
-     * @Route("/{id}/edit", name="members_edit")
+     * @Route("/{id}/edit", name="member_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Members $member)
+    public function editAction(Request $request, Member $member)
     {
         $deleteForm = $this->createDeleteForm($member);
-        $editForm = $this->createForm('AppBundle\Form\MembersType', $member);
+        $editForm = $this->createForm('AppBundle\Form\MemberType', $member);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('members_edit', array('id' => $member->getId()));
+            return $this->redirectToRoute('member_edit', array('id' => $member->getId()));
         }
 
-        return $this->render('members/edit.html.twig', array(
+        return $this->render('member/edit.html.twig', array(
             'member' => $member,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,10 +101,10 @@ class MembersController extends Controller
     /**
      * Deletes a member entity.
      *
-     * @Route("/{id}", name="members_delete")
+     * @Route("/{id}", name="member_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Members $member)
+    public function deleteAction(Request $request, Member $member)
     {
         $form = $this->createDeleteForm($member);
         $form->handleRequest($request);
@@ -115,20 +115,20 @@ class MembersController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('members_index');
+        return $this->redirectToRoute('member_index');
     }
 
     /**
      * Creates a form to delete a member entity.
      *
-     * @param Members $member The member entity
+     * @param Member $member The member entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Members $member)
+    private function createDeleteForm(Member $member)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('members_delete', array('id' => $member->getId())))
+            ->setAction($this->generateUrl('member_delete', array('id' => $member->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

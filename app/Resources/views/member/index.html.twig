@@ -18,7 +18,7 @@
         <tbody>
         {% for member in members %}
             <tr>
-                <td><a href="{{ path('members_show', { 'id': member.id }) }}">{{ member.id }}</a></td>
+                <td><a href="{{ path('member_show', { 'id': member.id }) }}">{{ member.id }}</a></td>
                 <td>{{ member.drummer }}</td>
                 <td>{{ member.bassist }}</td>
                 <td>{{ member.guitaristOne }}</td>
@@ -27,10 +27,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('members_show', { 'id': member.id }) }}">show</a>
+                            <a href="{{ path('member_show', { 'id': member.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('members_edit', { 'id': member.id }) }}">edit</a>
+                            <a href="{{ path('member_edit', { 'id': member.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -41,7 +41,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('members_new') }}">Create a new member</a>
+            <a href="{{ path('member_new') }}">Create a new member</a>
         </li>
     </ul>
 {% endblock %}

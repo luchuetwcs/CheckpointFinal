@@ -7,28 +7,28 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Namealbum</th>
                 <th>Releasedate</th>
-                <th>Description</th>
-                <th>Albumcover</th>
+                <th>Imageurl</th>
+                <th>Descriptionalbum</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for album in albums %}
             <tr>
-                <td><a href="{{ path('albums_show', { 'id': album.id }) }}">{{ album.id }}</a></td>
-                <td>{{ album.name }}</td>
+                <td><a href="{{ path('album_show', { 'id': album.id }) }}">{{ album.id }}</a></td>
+                <td>{{ album.nameAlbum }}</td>
                 <td>{{ album.releaseDate }}</td>
-                <td>{{ album.description }}</td>
-                <td>{{ album.albumCover }}</td>
+                <td>{{ album.imageUrl }}</td>
+                <td>{{ album.descriptionAlbum }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('albums_show', { 'id': album.id }) }}">show</a>
+                            <a href="{{ path('album_show', { 'id': album.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('albums_edit', { 'id': album.id }) }}">edit</a>
+                            <a href="{{ path('album_edit', { 'id': album.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +39,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('albums_new') }}">Create a new album</a>
+            <a href="{{ path('album_new') }}">Create a new album</a>
         </li>
     </ul>
 {% endblock %}

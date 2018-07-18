@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Albums
+ * Album
  *
- * @ORM\Table(name="albums")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AlbumsRepository")
+ * @ORM\Table(name="album")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AlbumRepository")
  */
-class Albums
+class Album
 {
     /**
      * @var int
@@ -24,9 +24,9 @@ class Albums
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="nameAlbum", type="string", length=255)
      */
-    private $name;
+    private $nameAlbum;
 
     /**
      * @var int
@@ -38,16 +38,16 @@ class Albums
     /**
      * @var string
      *
-     * @ORM\Column(name="stuffAlbum", type="text")
+     * @ORM\Column(name="imageUrl", type="text")
      */
-    private $stuffAlbum;
+    private $imageUrl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="albumCover", type="text")
+     * @ORM\Column(name="descriptionAlbum", type="text")
      */
-    private $albumCover;
+    private $descriptionAlbum;
 
 
     /**
@@ -61,27 +61,27 @@ class Albums
     }
 
     /**
-     * Set name.
+     * Set nameAlbum.
      *
-     * @param string $name
+     * @param string $nameAlbum
      *
-     * @return Albums
+     * @return Album
      */
-    public function setName($name)
+    public function setNameAlbum($nameAlbum)
     {
-        $this->name = $name;
+        $this->nameAlbum = $nameAlbum;
 
         return $this;
     }
 
     /**
-     * Get name.
+     * Get nameAlbum.
      *
      * @return string
      */
-    public function getName()
+    public function getNameAlbum()
     {
-        return $this->name;
+        return $this->nameAlbum;
     }
 
     /**
@@ -89,7 +89,7 @@ class Albums
      *
      * @param int $releaseDate
      *
-     * @return Albums
+     * @return Album
      */
     public function setReleaseDate($releaseDate)
     {
@@ -109,50 +109,50 @@ class Albums
     }
 
     /**
-     * Set description.
+     * Set imageUrl.
      *
-     * @param string $description
+     * @param string $imageUrl
      *
-     * @return Albums
+     * @return Album
      */
-    public function setDescription($stuffAlbum)
+    public function setImageUrl($imageUrl)
     {
-        $this->stuffAlbum = $stuffAlbum;
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
 
     /**
-     * Get description.
+     * Get imageUrl.
      *
      * @return string
      */
-    public function getDescription()
+    public function getImageUrl()
     {
-        return $this->stuffAlbum;
+        return $this->imageUrl;
     }
 
     /**
-     * Set albumCover.
+     * Set descriptionAlbum.
      *
-     * @param string $albumCover
+     * @param string $descriptionAlbum
      *
-     * @return Albums
+     * @return Album
      */
-    public function setAlbumCover($albumCover)
+    public function setDescriptionAlbum($descriptionAlbum)
     {
-        $this->albumCover = $albumCover;
+        $this->descriptionAlbum = $descriptionAlbum;
 
         return $this;
     }
 
     /**
-     * Get albumCover.
+     * Get descriptionAlbum.
      *
      * @return string
      */
-    public function getAlbumCover()
+    public function getDescriptionAlbum()
     {
-        return $this->albumCover;
+        return $this->descriptionAlbum;
     }
 }

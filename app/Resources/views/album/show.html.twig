@@ -10,30 +10,30 @@
                 <td>{{ album.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ album.name }}</td>
+                <th>Namealbum</th>
+                <td>{{ album.nameAlbum }}</td>
             </tr>
             <tr>
                 <th>Releasedate</th>
                 <td>{{ album.releaseDate }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ album.description }}</td>
+                <th>Imageurl</th>
+                <td>{{ album.imageUrl }}</td>
             </tr>
             <tr>
-                <th>Albumcover</th>
-                <td>{{ album.albumCover }}</td>
+                <th>Descriptionalbum</th>
+                <td>{{ album.descriptionAlbum }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('albums_index') }}">Back to the list</a>
+            <a href="{{ path('album_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('albums_edit', { 'id': album.id }) }}">Edit</a>
+            <a href="{{ path('album_edit', { 'id': album.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

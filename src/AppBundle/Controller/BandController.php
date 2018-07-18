@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Bands;
+use AppBundle\Entity\Band;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -10,23 +10,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Band controller.
  *
- * @Route("bands")
+ * @Route("band")
  */
-class BandsController extends Controller
+class BandController extends Controller
 {
     /**
      * Lists all band entities.
      *
-     * @Route("/", name="bands_index")
+     * @Route("/", name="band_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $bands = $em->getRepository('AppBundle:Bands')->findAll();
+        $bands = $em->getRepository('AppBundle:Band')->findAll();
 
-        return $this->render('bands/index.html.twig', array(
+        return $this->render('band/index.html.twig', array(
             'bands' => $bands,
         ));
     }
@@ -34,13 +34,13 @@ class BandsController extends Controller
     /**
      * Creates a new band entity.
      *
-     * @Route("/new", name="bands_new")
+     * @Route("/new", name="band_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $band = new Bands();
-        $form = $this->createForm('AppBundle\Form\BandsType', $band);
+        $band = new Band();
+        $form = $this->createForm('AppBundle\Form\BandType', $band);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,10 +48,10 @@ class BandsController extends Controller
             $em->persist($band);
             $em->flush();
 
-            return $this->redirectToRoute('bands_show', array('id' => $band->getId()));
+            return $this->redirectToRoute('band_show', array('id' => $band->getId()));
         }
 
-        return $this->render('bands/new.html.twig', array(
+        return $this->render('band/new.html.twig', array(
             'band' => $band,
             'form' => $form->createView(),
         ));
@@ -60,14 +60,14 @@ class BandsController extends Controller
     /**
      * Finds and displays a band entity.
      *
-     * @Route("/{id}", name="bands_show")
+     * @Route("/{id}", name="band_show")
      * @Method("GET")
      */
-    public function showAction(Bands $band)
+    public function showAction(Band $band)
     {
         $deleteForm = $this->createDeleteForm($band);
 
-        return $this->render('bands/show.html.twig', array(
+        return $this->render('band/show.html.twig', array(
             'band' => $band,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -76,22 +76,22 @@ class BandsController extends Controller
     /**
      * Displays a form to edit an existing band entity.
      *
-     * @Route("/{id}/edit", name="bands_edit")
+     * @Route("/{id}/edit", name="band_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Bands $band)
+    public function editAction(Request $request, Band $band)
     {
         $deleteForm = $this->createDeleteForm($band);
-        $editForm = $this->createForm('AppBundle\Form\BandsType', $band);
+        $editForm = $this->createForm('AppBundle\Form\BandType', $band);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('bands_edit', array('id' => $band->getId()));
+            return $this->redirectToRoute('band_edit', array('id' => $band->getId()));
         }
 
-        return $this->render('bands/edit.html.twig', array(
+        return $this->render('band/edit.html.twig', array(
             'band' => $band,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,10 +101,10 @@ class BandsController extends Controller
     /**
      * Deletes a band entity.
      *
-     * @Route("/{id}", name="bands_delete")
+     * @Route("/{id}", name="band_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Bands $band)
+    public function deleteAction(Request $request, Band $band)
     {
         $form = $this->createDeleteForm($band);
         $form->handleRequest($request);
@@ -115,20 +115,20 @@ class BandsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('bands_index');
+        return $this->redirectToRoute('band_index');
     }
 
     /**
      * Creates a form to delete a band entity.
      *
-     * @param Bands $band The band entity
+     * @param Band $band The band entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Bands $band)
+    private function createDeleteForm(Band $band)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bands_delete', array('id' => $band->getId())))
+            ->setAction($this->generateUrl('band_delete', array('id' => $band->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

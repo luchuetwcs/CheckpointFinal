@@ -10,22 +10,22 @@
                 <td>{{ band.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ band.name }}</td>
+                <th>Bandname</th>
+                <td>{{ band.bandName }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ band.description }}</td>
+                <th>Banddescription</th>
+                <td>{{ band.bandDescription }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('bands_index') }}">Back to the list</a>
+            <a href="{{ path('band_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('bands_edit', { 'id': band.id }) }}">Edit</a>
+            <a href="{{ path('band_edit', { 'id': band.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

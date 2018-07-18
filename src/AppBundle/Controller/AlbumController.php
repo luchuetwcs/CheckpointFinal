@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Albums;
+use AppBundle\Entity\Album;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -10,23 +10,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Album controller.
  *
- * @Route("albums")
+ * @Route("album")
  */
-class AlbumsController extends Controller
+class AlbumController extends Controller
 {
     /**
      * Lists all album entities.
      *
-     * @Route("/", name="albums")
+     * @Route("/", name="album_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $albums = $em->getRepository('AppBundle:Albums')->findAll();
+        $albums = $em->getRepository('AppBundle:Album')->findAll();
 
-        return $this->render('albums/index.html.twig', array(
+        return $this->render('album/index.html.twig', array(
             'albums' => $albums,
         ));
     }
@@ -34,13 +34,13 @@ class AlbumsController extends Controller
     /**
      * Creates a new album entity.
      *
-     * @Route("/new", name="albums_new")
+     * @Route("/new", name="album_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $album = new Albums();
-        $form = $this->createForm('AppBundle\Form\AlbumsType', $album);
+        $album = new Album();
+        $form = $this->createForm('AppBundle\Form\AlbumType', $album);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,10 +48,10 @@ class AlbumsController extends Controller
             $em->persist($album);
             $em->flush();
 
-            return $this->redirectToRoute('albums_show', array('id' => $album->getId()));
+            return $this->redirectToRoute('album_show', array('id' => $album->getId()));
         }
 
-        return $this->render('albums/new.html.twig', array(
+        return $this->render('album/new.html.twig', array(
             'album' => $album,
             'form' => $form->createView(),
         ));
@@ -60,14 +60,14 @@ class AlbumsController extends Controller
     /**
      * Finds and displays a album entity.
      *
-     * @Route("/{id}", name="albums_show")
+     * @Route("/{id}", name="album_show")
      * @Method("GET")
      */
-    public function showAction(Albums $album)
+    public function showAction(Album $album)
     {
         $deleteForm = $this->createDeleteForm($album);
 
-        return $this->render('albums/show.html.twig', array(
+        return $this->render('album/show.html.twig', array(
             'album' => $album,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -76,22 +76,22 @@ class AlbumsController extends Controller
     /**
      * Displays a form to edit an existing album entity.
      *
-     * @Route("/{id}/edit", name="albums_edit")
+     * @Route("/{id}/edit", name="album_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Albums $album)
+    public function editAction(Request $request, Album $album)
     {
         $deleteForm = $this->createDeleteForm($album);
-        $editForm = $this->createForm('AppBundle\Form\AlbumsType', $album);
+        $editForm = $this->createForm('AppBundle\Form\AlbumType', $album);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('albums_edit', array('id' => $album->getId()));
+            return $this->redirectToRoute('album_edit', array('id' => $album->getId()));
         }
 
-        return $this->render('albums/edit.html.twig', array(
+        return $this->render('album/edit.html.twig', array(
             'album' => $album,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,10 +101,10 @@ class AlbumsController extends Controller
     /**
      * Deletes a album entity.
      *
-     * @Route("/{id}", name="albums_delete")
+     * @Route("/{id}", name="album_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Albums $album)
+    public function deleteAction(Request $request, Album $album)
     {
         $form = $this->createDeleteForm($album);
         $form->handleRequest($request);
@@ -115,20 +115,20 @@ class AlbumsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('albums_index');
+        return $this->redirectToRoute('album_index');
     }
 
     /**
      * Creates a form to delete a album entity.
      *
-     * @param Albums $album The album entity
+     * @param Album $album The album entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Albums $album)
+    private function createDeleteForm(Album $album)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('albums_delete', array('id' => $album->getId())))
+            ->setAction($this->generateUrl('album_delete', array('id' => $album->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

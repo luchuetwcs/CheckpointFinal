@@ -6,21 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MembersType extends AbstractType
+class AlbumType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('drummer')->add('bassist')->add('guitaristOne')->add('guitaristTwo')->add('singer');
+        $builder->add('nameAlbum')->add('releaseDate')->add('imageUrl')->add('descriptionAlbum');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Members'
+            'data_class' => 'AppBundle\Entity\Album'
         ));
     }
 
@@ -29,7 +29,7 @@ class MembersType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_members';
+        return 'appbundle_album';
     }
 
 

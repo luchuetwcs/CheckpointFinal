@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Members
+ * Member
  *
- * @ORM\Table(name="members")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MembersRepository")
+ * @ORM\Table(name="member")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MemberRepository")
  */
-class Members
+class Member
 {
     /**
      * @var int
@@ -72,7 +72,7 @@ class Members
      *
      * @param string $drummer
      *
-     * @return Members
+     * @return Member
      */
     public function setDrummer($drummer)
     {
@@ -96,7 +96,7 @@ class Members
      *
      * @param string $bassist
      *
-     * @return Members
+     * @return Member
      */
     public function setBassist($bassist)
     {
@@ -120,7 +120,7 @@ class Members
      *
      * @param string $guitaristOne
      *
-     * @return Members
+     * @return Member
      */
     public function setGuitaristOne($guitaristOne)
     {
@@ -144,7 +144,7 @@ class Members
      *
      * @param string|null $guitaristTwo
      *
-     * @return Members
+     * @return Member
      */
     public function setGuitaristTwo($guitaristTwo = null)
     {
@@ -168,7 +168,7 @@ class Members
      *
      * @param string|null $singer
      *
-     * @return Members
+     * @return Member
      */
     public function setSinger($singer = null)
     {
