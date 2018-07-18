@@ -163,4 +163,28 @@ class Album
     {
         return $this->descriptionAlbum;
     }
+
+    /**
+     * Set bandName.
+     *
+     * @param \AppBundle\Entity\Band $bandName
+     *
+     * @return Album
+     */
+    public function setBandName(\AppBundle\Entity\Band $bandName)
+    {
+        $this->bandName = $bandName;
+
+        return $this;
+    }
+
+    /**
+     * Get bandName.
+     *
+     * @return \AppBundle\Entity\Band
+     */
+    public function getBandName()
+    {
+        return $this->bandName;
+    }
 }
