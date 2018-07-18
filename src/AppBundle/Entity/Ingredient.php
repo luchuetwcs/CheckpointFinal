@@ -94,4 +94,3 @@ class Ingredient
         return $this->quantite;
     }
 }
-

@@ -21,7 +21,6 @@ class AppFixtures extends Fixture
 
         $recettes = ['Mijoté de ', 'Grillé de ', 'Brochette de '];
 
-        $time = 00;
         $duration = [05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
 
         // create 20 products! Bam!
@@ -31,6 +30,7 @@ class AppFixtures extends Fixture
             $product->setQuantite(mt_rand(0, 1));
             $manager->persist($product);
             $recipe = new Recipe();
+            $recipe->setId($i);
             $recipe->setTitle($recettes[mt_rand(0, 2)].$ingredients[mt_rand(12, 18)]);
             $recipe->setTimePreparation(new \DateTime('00:'.$duration[mt_rand(0, 5)]));
             $recipe->setTimeCuisson(new \DateTime('00:'.$duration[mt_rand(5, 10)]));

@@ -17,10 +17,10 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $recipe1 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(20,38));
-        $recipe2 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(20,38));
-        $recipe3 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(20,38));
-        $recipe4 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(20,38));
+        $recipe1 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(0,18));
+        $recipe2 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(0,18));
+        $recipe3 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(0,18));
+        $recipe4 = $em->getRepository('AppBundle:Recipe')->find(mt_rand(0,18));
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [

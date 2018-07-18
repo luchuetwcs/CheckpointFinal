@@ -17,7 +17,6 @@ class Recipe
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -49,6 +48,20 @@ class Recipe
      */
     private $timeCuisson;
 
+
+    /**
+     * Set title
+     *
+     * @param int $id
+     *
+     * @return Recipe
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
