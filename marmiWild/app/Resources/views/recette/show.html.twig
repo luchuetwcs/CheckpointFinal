@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recette</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recette.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ recette.titre }}</td>
+            </tr>
+            <tr>
+                <th>Temps</th>
+                <td>{{ recette.temps }}</td>
+            <tr>
+                <th>Nbpersonnes</th>
+                <td>{{ recette.nbPersonnes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <ul>
+        <li>
+            <form method="post" action="{{ path('ingredient_new') }}">
+                <input id="recette" name="recette" type="hidden" value="{{ recette.titre }}">
+                <input type="submit" value="Ajouter un ingredient">
+            </form>
+        </li>
+        <li>
+            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

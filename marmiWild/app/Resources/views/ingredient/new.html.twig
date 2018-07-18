@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ingredient creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_label(form.nom, "Nom de l'ingredient") }}
+        {{ form_errors(form.nom) }}
+        {{ form_widget(form.nom) }}
+
+        {{ form_label(form.quantite, "Quantité") }}
+        {{ form_errors(form.quantite) }}
+        {{ form_widget(form.quantite) }}
+
+        {{ form_widget(form.produit) }}
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('ingredient_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

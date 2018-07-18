@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <ul>
+            <li>
+                <a href="{{ path('recette_new') }}">Ajouter une recette</a>
+            </li>
+            <li>
+                <a href="{{ path('recette_index') }}">Les recettes</a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
