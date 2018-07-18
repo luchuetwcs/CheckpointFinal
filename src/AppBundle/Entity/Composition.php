@@ -14,14 +14,14 @@ class Composition
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recettes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recette",inversedBy="recettes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recette;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredients")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ingredient;
@@ -80,11 +80,11 @@ class Composition
     /**
      * Set recette
      *
-     * @param \AppBundle\Entity\Recettes $recette
+     * @param \AppBundle\Entity\Recette $recette
      *
      * @return Composition
      */
-    public function setRecette(\AppBundle\Entity\Recettes $recette)
+    public function setRecette(\AppBundle\Entity\Recette $recette)
     {
         $this->recette = $recette;
 
@@ -94,7 +94,7 @@ class Composition
     /**
      * Get recette
      *
-     * @return \AppBundle\Entity\Recettes
+     * @return \AppBundle\Entity\Recette
      */
     public function getRecette()
     {
@@ -104,11 +104,11 @@ class Composition
     /**
      * Set ingredient
      *
-     * @param \AppBundle\Entity\Ingredients $ingredient
+     * @param \AppBundle\Entity\Ingredient $ingredient
      *
      * @return Composition
      */
-    public function setIngredient(\AppBundle\Entity\Ingredients $ingredient)
+    public function setIngredient(\AppBundle\Entity\Ingredient $ingredient)
     {
         $this->ingredient = $ingredient;
 
@@ -118,7 +118,7 @@ class Composition
     /**
      * Get ingredient
      *
-     * @return \AppBundle\Entity\Ingredients
+     * @return \AppBundle\Entity\Ingredient
      */
     public function getIngredient()
     {

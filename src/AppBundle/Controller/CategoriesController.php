@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Categories;
+use AppBundle\Entity\Categorie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('AppBundle:Categories')->findAll();
+        $categories = $em->getRepository('Categorie.php')->findAll();
 
         return $this->render('categories/index.html.twig', array(
             'categories' => $categories,
@@ -37,7 +37,7 @@ class CategoriesController extends Controller
      * @Route("/{id}", name="categories_show")
      * @Method("GET")
      */
-    public function showAction(Categories $category)
+    public function showAction(Categorie $category)
     {
 
         return $this->render('categories/show.html.twig', array(

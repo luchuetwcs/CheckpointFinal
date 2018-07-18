@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Unites;
+use AppBundle\Entity\Unite;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,7 +24,7 @@ class UnitesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $unites = $em->getRepository('AppBundle:Unites')->findAll();
+        $unites = $em->getRepository('Unite.php')->findAll();
 
         return $this->render('unites/index.html.twig', array(
             'unites' => $unites,
@@ -37,7 +37,7 @@ class UnitesController extends Controller
      * @Route("/{id}", name="unites_show")
      * @Method("GET")
      */
-    public function showAction(Unites $unite)
+    public function showAction(Unite $unite)
     {
 
         return $this->render('unites/show.html.twig', array(

@@ -14,14 +14,14 @@ class Composition
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recettes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recette")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recette;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredients")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ingredient;
@@ -75,5 +75,53 @@ class Composition
     public function getQuantite()
     {
         return $this->quantite;
+    }
+
+    /**
+     * Set recette
+     *
+     * @param \AppBundle\Entity\Recette $recette
+     *
+     * @return Composition
+     */
+    public function setRecette(\AppBundle\Entity\Recette $recette)
+    {
+        $this->recette = $recette;
+
+        return $this;
+    }
+
+    /**
+     * Get recette
+     *
+     * @return \AppBundle\Entity\Recette
+     */
+    public function getRecette()
+    {
+        return $this->recette;
+    }
+
+    /**
+     * Set ingredient
+     *
+     * @param \AppBundle\Entity\Ingredient $ingredient
+     *
+     * @return Composition
+     */
+    public function setIngredient(\AppBundle\Entity\Ingredient $ingredient)
+    {
+        $this->ingredient = $ingredient;
+
+        return $this;
+    }
+
+    /**
+     * Get ingredient
+     *
+     * @return \AppBundle\Entity\Ingredient
+     */
+    public function getIngredient()
+    {
+        return $this->ingredient;
     }
 }

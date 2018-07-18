@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Ingredients;
+use AppBundle\Entity\Ingredient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class IngredientsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $ingredients = $em->getRepository('AppBundle:Ingredients')->findAll();
+        $ingredients = $em->getRepository('Ingredient.php')->findAll();
 
         return $this->render('ingredients/index.html.twig', array(
             'ingredients' => $ingredients,
@@ -63,7 +63,7 @@ class IngredientsController extends Controller
      * @Route("/{id}", name="ingredients_show")
      * @Method("GET")
      */
-    public function showAction(Ingredients $ingredient)
+    public function showAction(Ingredient $ingredient)
     {
         $deleteForm = $this->createDeleteForm($ingredient);
 
@@ -79,7 +79,7 @@ class IngredientsController extends Controller
      * @Route("/{id}/edit", name="ingredients_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Ingredients $ingredient)
+    public function editAction(Request $request, Ingredient $ingredient)
     {
         $deleteForm = $this->createDeleteForm($ingredient);
         $editForm = $this->createForm('AppBundle\Form\IngredientsType', $ingredient);
@@ -104,7 +104,7 @@ class IngredientsController extends Controller
      * @Route("/{id}", name="ingredients_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Ingredients $ingredient)
+    public function deleteAction(Request $request, Ingredient $ingredient)
     {
         $form = $this->createDeleteForm($ingredient);
         $form->handleRequest($request);
@@ -121,11 +121,11 @@ class IngredientsController extends Controller
     /**
      * Creates a form to delete a ingredient entity.
      *
-     * @param Ingredients $ingredient The ingredient entity
+     * @param Ingredient $ingredient The ingredient entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Ingredients $ingredient)
+    private function createDeleteForm(Ingredient $ingredient)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('ingredients_delete', array('id' => $ingredient->getId())))
