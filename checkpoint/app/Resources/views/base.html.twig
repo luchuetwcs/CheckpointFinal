@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            <div class="container">
+                <h1>Routes disponibles :</h1>
+                <ul>
+                    <li>
+                        <a href="{{ path('recette_index') }}">Liste des Recettes</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('recette_new') }}">Créer une Recette</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

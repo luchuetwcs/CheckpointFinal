@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etapes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etape</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etape in etapes %}
+            <tr>
+                <td><a href="{{ path('etapes_show', { 'id': etape.id }) }}">{{ etape.id }}</a></td>
+                <td>{{ etape.etape }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('etapes_show', { 'id': etape.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('etapes_edit', { 'id': etape.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('etapes_new') }}">Create a new etape</a>
+        </li>
+    </ul>
+{% endblock %}
