@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+* {
+  font-family: Raleway, sans-serif;
+}
+
+.test{
+  color: red;
+}
+
+.img-navbar{
+  width: 80px;
+  margin-left: 20px;
+  margin-right: 60px;
+}
+
+.title_text_header {
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  //right: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 4em;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+  background-color: transparent;
+}

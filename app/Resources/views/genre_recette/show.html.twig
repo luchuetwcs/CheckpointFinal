@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Genre_recette</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ genre_recette.id }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ genre_recette.genre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('genre_recette_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Genre_recettes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre_recette in genre_recettes %}
+            <tr>
+                <td><a href="{{ path('genre_recette_show', { 'id': genre_recette.id }) }}">{{ genre_recette.id }}</a></td>
+                <td>{{ genre_recette.genre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('genre_recette_show', { 'id': genre_recette.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
