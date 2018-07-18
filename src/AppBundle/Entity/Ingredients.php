@@ -29,12 +29,15 @@ class Ingredients
     private $ingredient;
 
     /**
-     * @var int
      *
-     * @ORM\Column(name="quantite", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recette", mappedBy="ingredient")
      */
-    private $quantite;
+    private $recettes;
 
+    public function __toString ()
+    {
+        return $this->ingredient;
+    }
 
     /**
      * Get id
@@ -71,26 +74,44 @@ class Ingredients
     }
 
     /**
-     * Set quantite
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->recettes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add recette
      *
-     * @param integer $quantite
+     * @param \AppBundle\Entity\Recette $recette
      *
      * @return Ingredients
      */
-    public function setQuantite($quantite)
+    public function addRecette(\AppBundle\Entity\Recette $recette)
     {
-        $this->quantite = $quantite;
+        $this->recettes[] = $recette;
 
         return $this;
     }
 
     /**
-     * Get quantite
+     * Remove recette
      *
-     * @return int
+     * @param \AppBundle\Entity\Recette $recette
      */
-    public function getQuantite()
+    public function removeRecette(\AppBundle\Entity\Recette $recette)
     {
-        return $this->quantite;
+        $this->recettes->removeElement($recette);
+    }
+
+    /**
+     * Get recettes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecettes()
+    {
+        return $this->recettes;
     }
 }

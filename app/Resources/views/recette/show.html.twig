@@ -15,25 +15,25 @@
             </tr>
             <tr>
                 <th>Genreid</th>
-                <td>{{ recette.genreId }}</td>
+                <td>{{ recette.genre }}</td>
             </tr>
             <tr>
                 <th>Ingredientid</th>
-                <td>{{ recette.ingredientId }}</td>
+                <td>{{ recette.ingredient }}</td>
             </tr>
             <tr>
                 <th>Membreid</th>
-                <td>{{ recette.membreId }}</td>
+                <td>{{ recette.membre }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('recettes_index') }}">Back to the list</a>
+            <a href="{{ path('recette_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('recettes_edit', { 'id': recette.id }) }}">Edit</a>
+            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

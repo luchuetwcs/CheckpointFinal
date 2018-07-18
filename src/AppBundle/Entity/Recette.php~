@@ -161,28 +161,4 @@ class Recette
     {
         return $this->membre;
     }
-
-    /**
-     * Set preparation
-     *
-     * @param string $preparation
-     *
-     * @return Recette
-     */
-    public function setPreparation($preparation)
-    {
-        $this->preparation = $preparation;
-
-        return $this;
-    }
-
-    /**
-     * Get preparation
-     *
-     * @return string
-     */
-    public function getPreparation()
-    {
-        return $this->preparation;
-    }
 }

@@ -27,9 +27,31 @@
             <span class="sr-only">Next</span>
         </a>
         <div class="title_text_header">
-            <img src="{{ asset('images/marmiwild_logo-clair.png') }}" alt="" style="width: 180px;"><br><br>
-            <h1>RECETTES WILD</h1>
+            <img src="{{ asset('images/marmiwild_logo-clair.png') }}" alt="" style="width: 180px;"><br>
+            <h1 style="color: #FFFDE1;text-shadow: 3px 4px 2px black;">RECETTES WILD</h1>
         </div>
     </div>
+
+    <div class="bikerr_container">
+        <h2 style="text-align: center;">Découvrez toutes nos recettes :</h2>
+        <div class="container_velo">
+            <div class="row">
+                {% for recette in recettes %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 bikerr-card">
+                        <div class="shadow">
+                            <div class="card crop">
+                                <img class="card-img-top" src="" alt="recettes">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="title-announce">{{ recette.nom }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
 
 {% endblock %}

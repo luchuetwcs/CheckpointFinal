@@ -42,6 +42,17 @@ class Membre
      */
     private $dateInscription;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recette", mappedBy="genre")
+     */
+    private $recettes;
+
+    public function __toString ()
+    {
+        return $this->nom.' '.$this->prenom;
+    }
+
 
     /**
      * Get id
@@ -123,5 +134,46 @@ class Membre
     public function getDateInscription()
     {
         return $this->dateInscription;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->recettes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add recette
+     *
+     * @param \AppBundle\Entity\Recette $recette
+     *
+     * @return Membre
+     */
+    public function addRecette(\AppBundle\Entity\Recette $recette)
+    {
+        $this->recettes[] = $recette;
+
+        return $this;
+    }
+
+    /**
+     * Remove recette
+     *
+     * @param \AppBundle\Entity\Recette $recette
+     */
+    public function removeRecette(\AppBundle\Entity\Recette $recette)
+    {
+        $this->recettes->removeElement($recette);
+    }
+
+    /**
+     * Get recettes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecettes()
+    {
+        return $this->recettes;
     }
 }
