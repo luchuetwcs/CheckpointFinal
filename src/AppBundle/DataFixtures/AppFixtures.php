@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 19; $i++) {
             $product = new Ingredient();
             $product->setName($ingredients[$i]);
-            $product->setQuantite(mt_rand(0, 1));
+            $product->setQuantite(mt_rand(100, 500));
             $manager->persist($product);
             $recipe = new Recipe();
             $recipe->setId($i);
