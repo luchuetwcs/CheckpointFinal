@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RecetteType extends AbstractType
+class PhotoProfilType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,19 +15,16 @@ class RecetteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('preparation')
-            ->add('genre')
-            ->add('ingredient')
-            ->add('imageFile', FileType::class)
-            ->add('membre');
-    }/**
+            ->add('imageFile', FileType::class);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Recette'
+            'data_class' => 'AppBundle\Entity\Membre'
         ));
     }
 
@@ -36,8 +33,6 @@ class RecetteType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_recette';
+        return 'appbundle_membre';
     }
-
-
 }

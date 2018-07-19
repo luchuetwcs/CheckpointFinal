@@ -4,39 +4,18 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Recette
  *
  * @ORM\Table(name="recette")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RecetteRepository")
+ * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Recette
 {
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="recette_images", fileNameProperty="image")
-     * @var File
-     * @Assert\File(
-     *     maxSize = "5M",
-     *     maxSizeMessage="Votre fichier est trop volumineux, veuillez charger un fichier plus petit",
-     *     mimeTypes = {"image/jpg", "image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Veuillez télécharger un fichier au format .jpg ou .png"
-     * )
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
-     */
-    private $updatedAt;
 
     /**
      * @var int
@@ -46,6 +25,26 @@ class Recette
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="recette_image", fileNameProperty="image")
+     * @var File
+     *
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
 
     /**
      * @var string
@@ -212,31 +211,67 @@ class Recette
         return $this->preparation;
     }
 
-    public function setImageFile(File $image = null)
+    /**
+     * Set image.
+     *
+     * @param string $image
+     *
+     * @return PhotoVelo
+     */
+    public function setImage($image)
     {
-        $this->imageFile = $image;
+        $this->image = $image;
 
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
-        }
+        return $this;
     }
 
-    public function getImageFile()
+    /**
+     * Get image.
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile ()
     {
         return $this->imageFile;
     }
 
-    public function setImage($image)
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile ($imageFile)
     {
-        $this->image = $image;
+        $this->imageFile = $imageFile;
     }
 
-    public function getImage()
+    /**
+     * Set updatedAt.
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Recette
+     */
+    public function setUpdatedAt($updatedAt)
     {
-        return $this->image;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt.
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

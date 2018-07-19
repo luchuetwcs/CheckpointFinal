@@ -69,7 +69,7 @@ swiftmailer:
 vich_uploader:
     db_driver: orm
     mappings:
-        velo_image:
+        recette_image:
             uri_prefix: /uploads/
             upload_destination: '%kernel.project_dir%/web/images/uploads/'
             namer: Vich\UploaderBundle\Naming\HashNamer

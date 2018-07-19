@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recette;
+use AppBundle\Entity\Membre;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -133,5 +135,26 @@ class RecetteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/photo", name="photo")
+     *
+     */
+    public function photoProfilAction(Request $request)
+    {
+        $membre = $this->getUser();
+
+        $form = $this->createForm('AppBundle\Form\PhotoProfilType');
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid() ) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($membre);
+            $em->flush();
+        }
+
+        return $this->render('recette/photos.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }
