@@ -24,4 +24,18 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
             ;
     }
 
+
+    public function findTitle($title)
+    {
+        $fields = array('r.title');
+        return $this->createQueryBuilder('r')
+            ->select($fields)
+            ->distinct()
+            ->andWhere('r.title LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }
