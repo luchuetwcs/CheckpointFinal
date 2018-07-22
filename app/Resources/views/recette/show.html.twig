@@ -1,44 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Recette</h1>
+    <div class="bikerr_container">
+        <h1 style="text-align: center;">Votre {{ recette.genre }} :</h1>
+        <br>
+        <h2>{{ recette.nom }} :</h2>
+        <p style="font-style: italic;">Ingrédient principal : {{ recette.ingredient }}</p>
+        <p style="font-style: italic;">Recette proposée par : {{ recette.membre  }}</p>
+        <br><br>
+        {% if recette.image is not empty %}
+            <div class="container_annonce" >
+                <div class="crop_annonce">
+                    <img src="{{ asset('images/uploads/' ~recette.image) }}" alt="image-recette">
+                </div>
+            </div>
+        {% else %}
+        <div class="container_annonce" >
+            <div class="crop_annonce">
+                <img src="{{ asset('images/marmiwild_logo.png') }}" alt="image-marmiwild">
+            </div>
+        </div>
+        {% endif %}
+        <br><br>
+        <h3>Preparation :</h3>
+        <br><br>
+        <div class="container_velo">
+            <p>{{ recette.preparation }}</p>
+        </div>
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ recette.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ recette.nom }}</td>
-            </tr>
-            <tr>
-                <th>Genreid</th>
-                <td>{{ recette.genre }}</td>
-            </tr>
-            <tr>
-                <th>Ingredientid</th>
-                <td>{{ recette.ingredient }}</td>
-            </tr>
-            <tr>
-                <th>Membreid</th>
-                <td>{{ recette.membre }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="bikerr_container">
+        <div class="row">
+            <div class="col-sm-4 col-xs_6" style="text-align: center;">
+                <a href="{{ path('recette_index') }}" class="btn btn-primary" role="button">
+                    Retourner à la liste de recettes
+                </a>
+            </div>
+            <div class="col-sm-4 col-xs-6" style="text-align: center;">
+                <a href="{{ path('recette_edit', { 'id': recette.id }) }}" class="btn btn-success" role="button">
+                    Éditer la recette
+                </a>
+            </div>
+            <div class="col-sm-4 col-xs-6" style="text-align: center;">
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer" class="btn btn-danger">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('recette_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <br><br>
+
+
+    </div>
+
+
 {% endblock %}

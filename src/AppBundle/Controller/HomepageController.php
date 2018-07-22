@@ -21,8 +21,11 @@ class HomepageController extends Controller
     public function indexAction(request $request)
     {
         $recettes = $this->getDoctrine()->getRepository(Recette::class)->findAll();
+
+        //$photo = $this->getDoctrine()->getRepository(Pho)
         return $this->render('homepage/homepage.html.twig', array(
-            'recettes' => $recettes
+            'recettes' => $recettes,
+            //'photo' => $photo
         ));
     }
 }

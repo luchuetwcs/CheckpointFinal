@@ -19,7 +19,9 @@ class RecetteType extends AbstractType
             ->add('preparation')
             ->add('genre')
             ->add('ingredient')
-            ->add('imageFile', FileType::class)
+            ->add('imageFile', FileType::class, array(
+                'required' => false
+            ))
             ->add('membre');
     }/**
      * {@inheritdoc}
