@@ -2,10 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use JMS\Serializer\SerializerInterface;
 use AppBundle\Entity\Recipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Recipe controller.
@@ -160,4 +162,27 @@ class RecipeController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Lists all information entities.
+     *
+     * @Route("/title/{title}", name="information_index")
+     * @Method("GET")
+     * @param $title
+     * @param SerializerInterface $serializer
+     * @return Response
+     */
+    public function findAction($title, SerializerInterface $serializer)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $informations = $em->getRepository('AppBundle:Recipe')->findTitle($title);
+        $data=$serializer->serialize($informations, 'json');
+
+        $response=new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+
+    }
+
 }
