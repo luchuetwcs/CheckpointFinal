@@ -11,7 +11,10 @@
     <div class="container search">
         <div class="row">
             <form method="post" action="/recipe/title" class="offset-4">
-                <input type="search" name="search_recipe">
+                <input list="insertRecipe" id="rechercheRecipe" type="search" name="search_recipe">
+                <datalist class="mdb-autocomplete-wrap" id="insertRecipe">
+
+                </datalist>
                 <input type="submit" value="Search a recipe">
             </form>
         </div>
@@ -25,21 +28,21 @@
             <h1 class="text-center">Our best recipes</h1>
             <div class="row">
                 <div class="offset-1 col-5">
-                    <h4>{{ recipe1.title }}</h4>
+                    <h4><a href="{{ path('recipe_show', { 'id': recipe1.id }) }}">{{ recipe1.title }}</a></h4>
                     <p>{{ recipe1.description }}</p>
                 </div>
                 <div class="offset-1 col-5">
-                    <h4>{{ recipe2.title }}</h4>
+                    <h4><a href="{{ path('recipe_show', { 'id': recipe2.id }) }}">{{ recipe2.title }}</a></h4>
                     <p>{{ recipe2.description }}</p>
                 </div>
             </div>
             <div class="row separate">
                 <div class="offset-1 col-5">
-                    <h4>{{ recipe3.title }}</h4>
+                    <h4><a href="{{ path('recipe_show', { 'id': recipe3.id }) }}">{{ recipe3.title }}</a></h4>
                     <p>{{ recipe3.description }}</p>
                 </div>
                 <div class="offset-1 col-5">
-                    <h4>{{ recipe4.title }}</h4>
+                    <h4><a href="{{ path('recipe_show', { 'id': recipe4.id }) }}">{{ recipe4.title }}</a></h4>
                     <p>{{ recipe4.description }}</p>
                 </div>
             </div>
