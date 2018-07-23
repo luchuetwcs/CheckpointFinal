@@ -1,0 +1,129 @@
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+$pink: #ff90a6;
+$darkpink: darken(#ff90a6, 10%);
+
+/* CORPS DE LA PAGE */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f3f2;
+}
+
+#wrapper {
+  width: 55%;
+  margin: auto;
+}
+
+#wrapper article section:nth-child(2n) {
+  background-color: #474543;
+  color: white;
+  border: 2px solid $pink;
+  padding : 10px;
+  border-radius: 30px;
+}
+
+/* HEADER & FOOTER */
+
+header {
+  background-color:  $pink;
+  height: 100px;
+}
+
+header img {
+  width: 400px;
+  display: inline-block;
+}
+
+header p {
+  display: inline-block;
+  color: white;
+  font-size: 30px;
+  position: relative;
+  bottom: 70px;
+  left: 20px;
+}
+
+footer {
+  background-color:  $pink;
+  color: white;
+  padding: 20px;
+  height: 150px;
+  text-align: center;
+  margin-top: 50px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* TITRES */
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+h2 {
+  text-shadow: 4px 4px 12px rgba(150, 150, 150, 1);
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+/* LIENS */
+
+a {
+  text-decoration: none;
+}
+
+/* MENU DE NAVIGATION DEROULANT */
+
+/* menu par défaut invisible */
+
+.menuItem {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+
+h5 {
+  padding:0;
+  margin:0;
+}
+
+nav {
+  background-color: $pink;
+  color: white;
+  margin-bottom: 50px;
+}
+
+nav ul {
+  display: inline-block;
+  list-style: none;
+  text-align: left;
+  vertical-align: top;
+  margin-bottom: 0;
+  left: 20%;
+  position: relative;
+}
+
+
+/* apparition du menu au survol */
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: $darkpink;
+}
+

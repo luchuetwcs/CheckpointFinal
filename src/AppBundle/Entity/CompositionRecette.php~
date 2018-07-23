@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CompositionRecette
+ *
+ * @ORM\Table(name="composition_recette")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CompositionRecetteRepository")
+ */
+class CompositionRecette
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Recettes", inversedBy="recettes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $recette;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredients")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $ingredient;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+
