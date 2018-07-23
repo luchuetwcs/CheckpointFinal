@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recettes list</h1>
+       <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Ingredient</th>
+            <th>Ingredient1</th>
+            <th>Ingredient2</th>
+            <th>Ingredient3</th>
+            <th>Ingredient4</th>
+            <th>Ingredient5</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for recette in recettes %}
+            <tr>
+                <td><a href="{{ path('recette_show', { 'id': recette.id }) }}">{{ recette.id }}</a></td>
+                <td>{{ recette.description }}</td>
+                <td>{{ recette.ingredient }}</td>
+                <td>{{ recette.ingredient1 }}</td>
+                <td>{{ recette.ingredient2 }}</td>
+                <td>{{ recette.ingredient3 }}</td>
+                <td>{{ recette.ingredient4 }}</td>
+                <td>{{ recette.ingredient5 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('recette_show', { 'id': recette.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
+
