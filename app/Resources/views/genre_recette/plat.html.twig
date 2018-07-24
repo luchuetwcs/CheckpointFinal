@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="bikerr_container">
+
+        <h2 style="text-align: center;">Découvrez tous nos Plats :</h2>
+        <div class="container_velo">
+            <div class="row">
+                {% for plat in plats %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 bikerr-card">
+                        <div class="shadow">
+                            <div class="card crop">
+                                <a href="{{ path('recette_show', {'id': plat.id}) }}">
+                                    {% if plat.image is not empty %}
+                                        <img class="card-img-top" src="{{ asset('images/uploads/' ~ plat.image) }}" alt="recettes">
+                                    {% else %}
+                                        <img src="{{ asset('images/marmiwild_logo.png') }}" alt="logo-marmiwild">
+                                    {% endif %}
+                                </a>
+
+                            </div>
+                            <div class="card-body">
+                                <h5 class="title-announce">{{ plat.nom }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -61,6 +61,60 @@ class RecetteController extends Controller
     }
 
     /**
+     * Finds and displays the entry.
+     *
+     * @Route("/entrees", name="recette_entree")
+     * @Method("GET")
+     */
+    public function entreeAction(){
+        //retourne toutes les entrées
+        $entrees = $this->getDoctrine()->getRepository(Recette::class)->findBy(
+            array('genre' =>'1'),
+            array('id' => 'desc')
+        );
+
+        return $this->render('genre_recette/entree.html.twig', array(
+            'entrees' => $entrees
+        ));
+    }
+
+    /**
+     * Finds and displays the main courses.
+     *
+     * @Route("/plats", name="recette_plat")
+     * @Method("GET")
+     */
+    public function platAction(){
+        //retourne tous les plats principaux
+        $plats = $this->getDoctrine()->getRepository(Recette::class)->findBy(
+            array('genre' =>'2'),
+            array('id' => 'desc')
+        );
+
+        return $this->render('genre_recette/plat.html.twig', array(
+            'plats' => $plats
+        ));
+    }
+
+    /**
+     * Finds and displays the desserts.
+     *
+     * @Route("/desserts", name="recette_dessert")
+     * @Method("GET")
+     */
+    public function dessertAction(){
+        //retourne tous les desserts
+        $desserts = $this->getDoctrine()->getRepository(Recette::class)->findBy(
+            array('genre' =>'3'),
+            array('id' => 'desc')
+        );
+
+        return $this->render('genre_recette/dessert.html.twig', array(
+            'desserts' => $desserts
+        ));
+    }
+
+    /**
      * Finds and displays a recette entity.
      *
      * @Route("/{id}", name="recette_show")
