@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ingredients
@@ -12,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Ingredients
 {
+    /**
+     * @ORM\OneToMany(targetEntity="Recette_Qte_Ingr", mappedBy="ingredient")
+     */
+    protected $rct_qte_ingr;
+
+    public function __construct()
+    {
+        $this->rct_qte_ingr = new ArrayCollection();
+    }
+
     /**
      * @var int
      *
@@ -28,7 +39,6 @@ class Ingredients
      */
     private $nom;
 
-
     /**
      * Get id
      *
@@ -37,6 +47,16 @@ class Ingredients
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**
@@ -54,13 +74,36 @@ class Ingredients
     }
 
     /**
-     * Get nom
+     * Add rctQteIngr
      *
-     * @return string
+     * @param \AppBundle\Entity\Recette_Qte_Ingr $rctQteIngr
+     *
+     * @return Ingredients
      */
-    public function getNom()
+    public function addRctQteIngr(\AppBundle\Entity\Recette_Qte_Ingr $rctQteIngr)
     {
-        return $this->nom;
+        $this->rct_qte_ingr[] = $rctQteIngr;
+
+        return $this;
+    }
+
+    /**
+     * Remove rctQteIngr
+     *
+     * @param \AppBundle\Entity\Recette_Qte_Ingr $rctQteIngr
+     */
+    public function removeRctQteIngr(\AppBundle\Entity\Recette_Qte_Ingr $rctQteIngr)
+    {
+        $this->rct_qte_ingr->removeElement($rctQteIngr);
+    }
+
+    /**
+     * Get rctQteIngr
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRctQteIngr()
+    {
+        return $this->rct_qte_ingr;
     }
 }
-
