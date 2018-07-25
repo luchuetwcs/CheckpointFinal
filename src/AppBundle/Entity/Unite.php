@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Unites
+ * Unite
  *
- * @ORM\Table(name="unites")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UnitesRepository")
+ * @ORM\Table(name="unite")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UniteRepository")
  */
-class Unites
+class Unite
 {
     /**
      * @var int
@@ -24,9 +24,9 @@ class Unites
     /**
      * @var string
      *
-     * @ORM\Column(name="unites", type="string", length=128)
+     * @ORM\Column(name="indice", type="string", length=45)
      */
-    private $unites;
+    private $indice;
 
 
     /**
@@ -40,26 +40,27 @@ class Unites
     }
 
     /**
-     * Set unites
+     * Set indice
      *
-     * @param string $unites
+     * @param string $indice
      *
-     * @return Unites
+     * @return Unite
      */
-    public function setUnites($unites)
+    public function setIndice($indice)
     {
-        $this->unites = $unites;
+        $this->indice = $indice;
 
         return $this;
     }
 
     /**
-     * Get unites
+     * Get indice
      *
      * @return string
      */
-    public function getUnites()
+    public function getIndice()
     {
-        return $this->unites;
+        return $this->indice;
     }
 }
+

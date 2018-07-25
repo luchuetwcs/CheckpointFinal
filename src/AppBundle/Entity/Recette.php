@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ingredients
+ * Recette
  *
- * @ORM\Table(name="ingredients")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IngredientsRepository")
+ * @ORM\Table(name="recette")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RecetteRepository")
  */
-class Ingredients
+class Recette
 {
     /**
      * @var int
@@ -28,6 +28,13 @@ class Ingredients
      */
     private $nom;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="methodologie", type="text")
+     */
+    private $methodologie;
+
 
     /**
      * Get id
@@ -44,7 +51,7 @@ class Ingredients
      *
      * @param string $nom
      *
-     * @return Ingredients
+     * @return Recette
      */
     public function setNom($nom)
     {
@@ -61,6 +68,30 @@ class Ingredients
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set methodologie
+     *
+     * @param string $methodologie
+     *
+     * @return Recette
+     */
+    public function setMethodologie($methodologie)
+    {
+        $this->methodologie = $methodologie;
+
+        return $this;
+    }
+
+    /**
+     * Get methodologie
+     *
+     * @return string
+     */
+    public function getMethodologie()
+    {
+        return $this->methodologie;
     }
 }
 
