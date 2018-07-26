@@ -85,6 +85,17 @@
   margin: auto;
 }
 
+.box_login{
+  width: 400px;
+  margin: auto;
+  border: 1px solid lightgrey;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn:hover{
+  background-color: #c2c2c2;
+}
 @media (max-width: 576px)
 {
   .container_velo {
